@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Age Group Calculator</title>
+</head>
+<body>
+  <h1>Age Group Calculator</h1>
+  <form id="ageGroupForm">
+    <label for="birthYearInput">Birth Year:</label>
+    <input type="number" id="birthYearInput" name="birthYear" required>
+    <br>
+    <button type="submit">Calculate Age Group</button>
+  </form>
+  <div id="result">
+    <p id="ageResult"></p>
+    <p id="ageGroupResult"></p>
+  </div>
+
+  <script src="NewFunc.js"></script>
+  <script>
+    const ageGroupForm = document.getElementById('ageGroupForm');
+    const ageResult = document.getElementById('ageResult');
+    const ageGroupResult = document.getElementById('ageGroupResult');
+
+    ageGroupForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const birthYearInput = document.getElementById('birthYearInput');
+      const birthYear = parseInt(birthYearInput.value);
+
+      const currentYear = new Date().getFullYear(); // Get the current year
+
+      const age = currentYear - birthYear;
+      const ageGroup = calculateAgeGroup(birthYear, currentYear);
+
+      ageResult.textContent = `Your current age is: ${age}`;
+      ageGroupResult.textContent = `Your age group is: ${ageGroup}`;
+    });
+  </script>
+</body>
+</html>
